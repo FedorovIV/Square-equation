@@ -6,7 +6,7 @@
 const double PRECISION = 0.00000001;
 
 int solve_square_equation(double a, double b, double c, double* x1, double* x2); 
-int solve_line_equation(double a, double b, double* x);
+int solve_linear_equation(double a, double b, double* x);
 
 int main()
 {
@@ -37,7 +37,7 @@ int main()
     return 0;
 }
 
-int solve_line_equation(double a, double b, double* x)
+int solve_linear_equation(double a, double b, double* x)
 {
     assert(x);
     assert(a != 0);
@@ -59,7 +59,7 @@ int solve_square_equation(double a, double b, double c, double* x1, double* x2) 
     
     if (abs(a)<PRECISION && abs(b)>PRECISION)
     {
-        solve_line_equation(b, c, x1);
+        solve_linear_equation(b, c, x1);
         return 1;
     }
     
