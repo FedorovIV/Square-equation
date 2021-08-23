@@ -39,6 +39,7 @@ int main()
 
 int solve_line_equation(double a, double b, double* x)
 {
+    assert(x);
     assert(a != 0);
     *x = -b / a;
 }
