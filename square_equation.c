@@ -65,18 +65,18 @@ int solve_square_equation(double a, double b, double c, double* x1, double* x2) 
     assert(isfinite(b));
     assert(isfinite(c));
     
-    if (abs(a)<PRECISION && abs(b)<PRECISION && abs(c)<PRECISION)
+    if (abs(a) < PRECISION && abs(b) < PRECISION && abs(c) < PRECISION)
     {
         return 3;
     }
     
-    if (abs(a)<PRECISION && abs(b)>PRECISION)
+    if (abs(a) < PRECISION && abs(b) > PRECISION)
     {
         solve_linear_equation(b, c, x1);
         return 1;
     }
     
-    if (abs(a)<PRECISION && abs(b)<PRECISION)
+    if (abs(a) < PRECISION && abs(b) < PRECISION)
     {
         return 0;
     }
