@@ -6,7 +6,14 @@
 const double PRECISION = 0.00000001;
 
 int solve_square_equation(double a, double b, double c, double* x1, double* x2); 
-int solve_linear_equation(double a, double b, double* x);
+void solve_linear_equation(double a, double b, double* x);
+void test_square_equation_all_coeffs_zero();
+void test_square_equation_a_zero_b_not_zero();
+void test_square_equation_a_zero_b_zero_c_not_zero();
+void test_square_equation_a_and_b_and_c_not_zero();
+void test_square_equation_a_not_zero_D_zero();
+void test_square_equation_a_not_zero_D_more_zero();
+void test_square_equation_a_not_zero_D_less_zero();
 
 int main()
 {
@@ -34,10 +41,16 @@ int main()
         printf("An infinite number of solutions");
         break;
     }
+    test_square_equation_all_coeffs_zero();
+    test_square_equation_a_zero_b_not_zero();
+    test_square_equation_a_zero_b_zero_c_not_zero();
+    test_square_equation_a_not_zero_D_zero();
+    test_square_equation_a_not_zero_D_more_zero();
+    test_square_equation_a_not_zero_D_less_zero();
     return 0;
 }
 
-int solve_linear_equation(double a, double b, double* x)
+void solve_linear_equation(double a, double b, double* x)
 {
     assert(x);
     assert(a != 0);
@@ -83,4 +96,46 @@ int solve_square_equation(double a, double b, double c, double* x1, double* x2) 
     
     *x1 = -b / (2 * a);
     return 1;
+}
+
+void test_square_equation_all_coeffs_zero() {
+    double x1 = 0;
+    double x2 = 0;
+    
+    assert(solve_square_equation(0, 0, 0, &x1, &x2) == 3);
+}
+
+void test_square_equation_a_zero_b_not_zero() {
+    double x1 = 0;
+    double x2 = 0;
+    
+    assert(solve_square_equation(0, 1, 2, &x1, &x2) == 1 && x1 == -2);
+}
+
+void test_square_equation_a_zero_b_zero_c_not_zero() {
+    double x1 = 0;
+    double x2 = 0;
+    
+    assert(solve_square_equation(0, 0, 2, &x1, &x2) == 0);
+}
+
+void test_square_equation_a_not_zero_D_zero() {
+    double x1 = 0;
+    double x2 = 0;
+    
+    assert(solve_square_equation(1, 2, 1, &x1, &x2) == 1 && x1 == -1);
+}
+
+void test_square_equation_a_not_zero_D_more_zero() {
+    double x1 = 0;
+    double x2 = 0;
+    
+    assert(solve_square_equation(1, -3, 2, &x1, &x2) == 2 && x1 == 2 && x2 == 1);
+}
+
+void test_square_equation_a_not_zero_D_less_zero() {
+    double x1 = 0;
+    double x2 = 0;
+    
+    assert(solve_square_equation(1, 0, 12, &x1, &x2) == 0);
 }
